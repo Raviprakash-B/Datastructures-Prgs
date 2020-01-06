@@ -23,9 +23,9 @@ int main()
 			array[j]=array[j+1];
 			array[j+1]=temp;
 
-		    }
-	    }
-    }
+		        }
+	       }
+       }
 printf("Sorted elements are : \n");
       for(i=0;i<n;i++)
       printf(" %d",array[i]);
