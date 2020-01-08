@@ -7,7 +7,7 @@ int main()
 	
 	printf("enter %d numbers \n",n);
 	for(i=0;i<n;i++)
-	scanf("%d",&array[c]);
+	scanf("%d",&array[i]);
 	
 	printf("enter a number to search \n");
 	scanf("%d",&search);
