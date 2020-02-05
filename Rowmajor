@@ -1,0 +1,64 @@
+#include<stdio.h>
+int rowmajor(int a[10][10],int b[10],int r,int c)
+{
+	int i,j,pos=0;
+	for(i=0;i<r;i++)
+	{
+		for(j=0;j<c;j++)
+		{
+			b[pos++]=a[i][j];
+		}
+	}
+}
+int elepos(int x,int y,int r,int c)
+{
+	return (x*c+y);
+}
+
+int main()
+{
+	int a[10][10],b[10],r,c,i,j,count=0,x,y,loc;
+	do{
+		printf("Enter the row and size of an array \n");
+		scanf("%d%d",&r,&c);
+		if(r<0||r<0)
+		{
+			printf("row and column size should be greater than 0");
+		}
+		else
+		{
+			count=1;
+			printf("enter matrix elements");
+				for(i=0;i<r;i++)
+					{
+						for(j=0;j<c;j++)
+						{
+							scanf("%d",&a[i][j]);
+						}
+				   }
+				   	printf("enter matrix elements");
+					for(i=0;i<r;i++)
+					{
+						for(j=0;j<c;j++)
+						{
+							printf("%d",a[i][j]);
+							printf("\n");
+						}
+				   }
+				   
+				 	printf("Row major elements are \n");
+					 printf("index \t elements \n");
+					 rowmajor(a,b,r,c);
+					 for(i=0;i<r*c;i++)
+					 printf("%d \t %d \n",i,b[i]);
+					 printf("\n");
+					 
+					 printf("enter the value of x and y");
+					 scanf("%d%d",&x,&y);
+					 loc=elepos(x,y,r,c);
+					 printf("element in the 1-D array position is=%d and element is %d \n",loc,a[x][j]);
+			}
+				
+		}while (count==0);
+}
+}
