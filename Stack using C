@@ -1,0 +1,101 @@
+//Author-Raviprakash.B
+//DOC-13-02-2020
+//Stack Program
+#include<stdio.h>
+#include<stdlib.h>
+void push(int a[10],int val,int *top)
+{
+	*top=*top+1;
+	a[*top]=val;
+}
+
+//check stack is full or not
+
+int isFull(int *top,int n)
+{
+	if(*top==n-1)
+	return 1;
+	return -1;
+}
+
+//check stack is Empty or not
+
+int isEmpty(int *top,int n)
+{
+	if(*top<0)
+	return 1;
+	return -1;
+}
+
+//pop operation
+int pop(int a[],int *top)
+{
+	int val;
+	val=a[*top];
+	*top=*top-1;
+	return val;
+}
+
+//Display stack
+
+void display(int a[],int top,int i)
+{
+		printf("Index \t Values\n");
+		for(i=top;i>=0;i--){
+		printf("%d\t%d",i,a[i]);
+		printf("\n");
+		}
+	
+}
+
+int main()
+{
+	int a[20],top=-1,val,n,ch,i;
+	
+	printf("Enter the Stack Size \n");
+	scanf("%d",&n);
+do{
+	printf("---------Men----------\n");
+	printf("1-Push\n2-Pop\n3-Display\n");
+	printf("Enter Your Choice \n");
+	scanf("%d",&ch);
+
+	switch(ch)
+	{
+
+	case 1:
+		if(isFull(&top,n)==1)
+		{
+			printf("Stcak is Full");
+		}
+		else
+		{
+			printf("Enter the Number \n");
+			scanf("%d",&val);
+			push(a,val,&top);
+			printf("Element is Pushed \n");
+		}
+		break;
+
+	case 2:
+		if(isEmpty(&top,n)==1)
+		{
+			printf("Stack is Empty");
+		}
+		else
+		{
+			int b=pop(a,&top);
+			printf("Element is popped is %d \n",b);
+		}
+		break;
+
+	case 3:
+		display(a,top,i);
+		break;
+
+	case 4:
+		exit(0);
+
+	}
+}while(ch>=0 && ch<=4);
+}
