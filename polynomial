@@ -1,0 +1,98 @@
+//author:Raviprakash
+//doc4-2-2020
+//program to perform polynimial matrix
+
+#include<stdio.h>
+#include<stdlib.h>
+struct polynomial {
+	int exp;
+	int cof;
+};
+
+//input for polynomial
+void getPoly(struct polynomial p[], int n) {
+	printf("\nEnter polynomial expression\n");
+	for(int i = 0; i < n; i++) {
+		printf("Enter coiffeciant and exponent\n");
+		scanf("%d", &p[i].cof);
+		scanf("%d", &p[i].exp);
+	}
+
+}
+
+//display polynomial
+void showPoly(struct polynomial p[], int n) {
+	printf("\nPolynomial expression\n");
+	for(int i = 0; i < n; i ++) {
+		printf("(%d, %d), ", p[i].cof, p[i].exp);
+	}
+	printf("\n");
+}
+
+//maping polynomial matrix
+
+int  addPoly(struct polynomial p1[10],struct polynomial p2[10],struct polynomial p3[10],int n1,int n2,int n3)
+{
+	int j=0;
+	int i=0;
+	while( i < n1 && j < n2)
+	 {
+		if(p1[i].exp > p2[j].exp) {
+			p3[n3].cof = p1[i].cof;
+			p3[n3].exp = p1[i].exp;
+			n3++;
+			i++;
+		}
+		else if(p2[j].exp > p1[i].exp){
+			p3[n3].cof = p2[j].cof;
+                        p3[n3].exp = p2[j].exp;
+                        n3++;
+                        j++;
+                }
+		else 
+		{
+			p3[n3].cof = p2[j].cof + p1[i].cof;
+			p3[n3].exp = p1[i].exp;
+			n3++;
+			i++;
+			j++;
+		}
+	}
+		while(i <= n1)
+                 {
+                        p3[n3].cof = p1[i].cof;
+                        p3[n3].exp = p1[i].exp;
+                        i++;
+                        n3++;
+
+                }
+                 while(j <= n2)
+                 {
+                        p3[n3].cof = p2[i].cof;
+                        p3[n3].exp = p2[i].exp;
+                        j++;
+                        n3++;
+                }
+		return(n3);
+
+} 
+int main()
+{
+	system("clear");
+	int n1, n2,n3=0;
+	struct polynomial p1[10],p2[10],p3[10];
+	printf("\nEnter number of terms: ");
+	scanf("%d", &n1);
+	getPoly(p1, n1);
+        printf("\nEnter number of terms: ");
+        scanf("%d", &n2);
+        getPoly(p2, n2);
+	showPoly(p1,n1);
+	showPoly(p2,n2);
+	
+	addPoly(p1,p2,p3,n1,n2,n3);
+	showPoly(p3,n3);
+
+
+
+}
